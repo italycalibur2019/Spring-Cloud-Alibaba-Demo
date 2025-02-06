@@ -1,11 +1,17 @@
-server:
-  port: 8091
 spring:
   application:
-    name: Spring-Cloud-Alibaba-Demo-Basic
+    name: basic-service
+  config:
+    import:
+      - nacos:basic-service-dev.yml
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
         username: nacos
         password: nacos
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml

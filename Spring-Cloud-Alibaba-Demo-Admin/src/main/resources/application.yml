@@ -1,11 +1,17 @@
-server:
-  port: 8090
 spring:
   application:
-    name: Spring-Cloud-Alibaba-Demo-Admin
+    name: admin-service
+  config:
+    import:
+      - nacos:admin-service-dev.yml
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
         username: nacos
         password: nacos
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
