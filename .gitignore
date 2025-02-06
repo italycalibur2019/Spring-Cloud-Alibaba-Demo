@@ -1,0 +1,51 @@
+##Ignore This File##
+/target/
+/.idea/
+/.settings/
+/.vscode/
+/bin/
+
+.classpath
+.project
+.settings
+.idea
+##Filter Databfile/Sln File##
+*.mdb
+*.ldb
+*.sln
+##Class File##
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+##Compression File##
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.via
+*.tmp
+*.err
+*.log
+*.iml
+##OS Generated Files##
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.factorypath
+/.mvn/
+/mvnw.cmd
+/mvnw
+##JRebel File##
+rebel.xml
