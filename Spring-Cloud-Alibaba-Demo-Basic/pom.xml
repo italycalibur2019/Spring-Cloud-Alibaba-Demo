@@ -39,6 +39,15 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.italycalibur.ciallo</groupId>
 			<artifactId>Spring-Cloud-Alibaba-Demo-Common</artifactId>
 			<version>1.0-SNAPSHOT</version>

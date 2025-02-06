@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: Spring-Cloud-Alibaba-Demo-Basic
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
