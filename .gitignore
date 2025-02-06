@@ -1,5 +1,5 @@
 ##Ignore This File##
-/target/
+target/
 /.idea/
 /.settings/
 /.vscode/
