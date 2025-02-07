@@ -3,7 +3,7 @@ spring:
     name: basic-service
   config:
     import:
-      - nacos:basic-service-dev.yml
+      - nacos:${BASIC_SERVICE_ENV}.yml # idea克隆一个服务，在环境变量选项中填"BASIC_SERVICE_ENV=[对应配置文件.前面的名称]"
   cloud:
     nacos:
       discovery:
