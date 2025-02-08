@@ -17,6 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestApi {
     @PostMapping("/testApi")
     public String testApi(@RequestBody GoodsPO goods) {
-        return "调用API成功！货物名称：" + goods.getGoodsName();
+        return "货物名称：" + goods.getGoodsName();
     }
 }

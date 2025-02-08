@@ -42,6 +42,6 @@ public class TestController {
         GoodsPO goods = new GoodsPO();
         goods.setId(1L);
         goods.setGoodsName(goodsName);
-        return Result.ok("调用成功！" + testApiFeignClient.testApi(goods));
+        return Result.ok("调用API成功！" + testApiFeignClient.testApi(goods));
     }
 }
