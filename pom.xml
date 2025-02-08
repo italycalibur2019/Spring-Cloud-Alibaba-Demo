@@ -19,7 +19,7 @@
         <spring-boot.version>3.3.8</spring-boot.version>
         <lombok.version>1.18.36</lombok.version>
         <postgresql.version>42.7.4</postgresql.version>
-        <druid.version>1.2.24</druid.version>
+        <druid.version>1.2.23</druid.version>
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
     </properties>
 

@@ -1,5 +1,10 @@
 package com.italycalibur.ciallo.common.models.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
@@ -10,9 +15,13 @@ import lombok.Data;
  * @description: 货物表
  */
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
+@TableName(value = "t_goods_po")
 public class GoodsPO {
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
+    @TableField(value = "goods_name")
     private String goodsName;
 }
