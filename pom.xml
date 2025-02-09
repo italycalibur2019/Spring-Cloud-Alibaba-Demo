@@ -27,6 +27,7 @@
         <module>Spring-Cloud-Alibaba-Demo-Common</module>
         <module>Spring-Cloud-Alibaba-Demo-Admin</module>
         <module>Spring-Cloud-Alibaba-Demo-Basic</module>
+        <module>Spring-Cloud-Alibaba-Demo-Gateway</module>
     </modules>
 
     <dependencyManagement>
