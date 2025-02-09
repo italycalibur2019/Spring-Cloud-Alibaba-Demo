@@ -3,7 +3,7 @@ package com.italycalibur.ciallo.basic.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.italycalibur.ciallo.basic.service.IGoodsService;
 import com.italycalibur.ciallo.common.models.entity.GoodsPO;
-import com.italycalibur.ciallo.common.models.mapper.GoodsPOMapper;
+import com.italycalibur.ciallo.common.models.mapper.GoodsMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,5 +13,5 @@ import org.springframework.stereotype.Service;
  * @version 1.0
  */
 @Service
-public class GoodsService extends ServiceImpl<GoodsPOMapper, GoodsPO> implements IGoodsService {
+public class GoodsService extends ServiceImpl<GoodsMapper, GoodsPO> implements IGoodsService {
 }

@@ -21,6 +21,7 @@
         <postgresql.version>42.7.4</postgresql.version>
         <druid.version>1.2.23</druid.version>
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
+        <jjwt.version>0.12.6</jjwt.version>
     </properties>
 
     <modules>
@@ -84,6 +85,12 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- jjwt token生成 -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

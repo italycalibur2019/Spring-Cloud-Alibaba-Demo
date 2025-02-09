@@ -9,15 +9,18 @@ import lombok.*;
  * @author dhr
  * @version 1.0
  * @date 2025-02-07 20:56:46
- * @description: 货物表
+ * @description: 用户表
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "t_goods_po")
-public class GoodsPO extends BaseEntity {
-    @TableField(value = "goods_name")
-    private String goodsName;
+@TableName(value = "t_user_po")
+public class UserPO extends BaseEntity {
+    @TableField(value = "username")
+    private String username;
+
+    @TableField(value = "password")
+    private String password;
 }
