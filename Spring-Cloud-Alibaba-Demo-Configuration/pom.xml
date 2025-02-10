@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>Spring-Cloud-Alibaba-Demo-Gateway</artifactId>
+    <artifactId>Spring-Cloud-Alibaba-Demo-Configuration</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Spring-Cloud-Alibaba-Demo-Gateway</name>
-    <description>微服务-网关模块</description>
+    <name>Spring-Cloud-Alibaba-Demo-Configuration</name>
+    <description>微服务-配置模块</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -34,21 +34,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <dependency>
@@ -57,19 +44,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.italycalibur.ciallo</groupId>
-            <artifactId>Spring-Cloud-Alibaba-Demo-Configuration</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -2,7 +2,7 @@ package com.italycalibur.ciallo.admin.controller;
 
 import com.italycalibur.ciallo.admin.dto.LoginDTO;
 import com.italycalibur.ciallo.admin.service.IAuthService;
-import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

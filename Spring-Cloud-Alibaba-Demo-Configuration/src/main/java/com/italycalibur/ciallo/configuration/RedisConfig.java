@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.common.configuration;
+package com.italycalibur.ciallo.configuration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

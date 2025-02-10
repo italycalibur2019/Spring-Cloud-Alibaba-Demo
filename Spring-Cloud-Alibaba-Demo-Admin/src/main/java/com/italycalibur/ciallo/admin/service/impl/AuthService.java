@@ -1,7 +1,7 @@
 package com.italycalibur.ciallo.admin.service.impl;
 
 import com.italycalibur.ciallo.admin.service.IAuthService;
-import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import com.italycalibur.ciallo.common.models.mapper.UserMapper;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
