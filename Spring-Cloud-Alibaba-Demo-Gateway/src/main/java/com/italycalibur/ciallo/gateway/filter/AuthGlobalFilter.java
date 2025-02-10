@@ -1,8 +1,8 @@
-package com.italycalibur.ciallo.gateway.configuration;
+package com.italycalibur.ciallo.gateway.filter;
 
 import jakarta.annotation.Resource;
-import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ import reactor.core.publisher.Mono;
  * @description: gateway 全局鉴权过滤器
  */
 @Component
-public class AuthFilterConfig implements GatewayFilter, Ordered {
+public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
