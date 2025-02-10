@@ -18,10 +18,10 @@ import reactor.core.publisher.Mono;
  * @author dhr
  * @version 1.0
  * @date 2025-02-09 19:43:20
- * @description: gateway过滤器
+ * @description: gateway 全局鉴权过滤器
  */
 @Component
-public class GlobalFilterConfig implements GatewayFilter, Ordered {
+public class AuthFilterConfig implements GatewayFilter, Ordered {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -58,7 +58,7 @@ public class GlobalFilterConfig implements GatewayFilter, Ordered {
     }
 
     @Override
-    public int getOrder() { return 0; }
+    public int getOrder() { return -100; }
 
     /**
      * 是否需要过滤
