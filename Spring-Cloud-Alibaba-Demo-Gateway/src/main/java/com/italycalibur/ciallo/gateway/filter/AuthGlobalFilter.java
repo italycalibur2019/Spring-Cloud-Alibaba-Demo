@@ -1,5 +1,6 @@
 package com.italycalibur.ciallo.gateway.filter;
 
+import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -24,10 +25,8 @@ import reactor.core.publisher.Mono;
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
-
-    public static final String HEADER_NAME = "Authorization";
-
-    public static final String TOKEN_PREFIX = "Bearer ";
+    @Resource
+    private JwtTokenProperty jwtTokenProperty;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -42,17 +41,17 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             return chain.filter(exchange);
         }
         // 获取token信息
-        String token = request.getHeaders().getFirst(HEADER_NAME);
+        String token = request.getHeaders().getFirst(jwtTokenProperty.getHeader());
         if (ObjectUtils.isEmpty(token)) {
             return unAuthorize(response);
         }
         // 验证redis中是否存在token
-        String realToken = token.substring(TOKEN_PREFIX.length());
+        String realToken = token.substring(jwtTokenProperty.getPrefix().length());
         if (ObjectUtils.isEmpty(realToken) || !redisTemplate.hasKey(realToken)) {
             return unAuthorize(response);
         }
         // 把新的exchange 放回到过滤链
-        ServerHttpRequest newRequest = request.mutate().header(HEADER_NAME, token).build();
+        ServerHttpRequest newRequest = request.mutate().header(jwtTokenProperty.getHeader(), token).build();
         ServerWebExchange newExchange = exchange.mutate().request(newRequest).build();
         return chain.filter(newExchange);
     }

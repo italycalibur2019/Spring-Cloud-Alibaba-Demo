@@ -5,6 +5,7 @@ spring:
     import:
       - nacos:gateway-service-dev.yml
       - nacos:common-redis-dev.yml
+      - nacos:common-jwt-dev.yml
   cloud:
     nacos:
       discovery:
