@@ -1,0 +1,38 @@
+server:
+  port: 9999
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+spring:
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+      filter:
+        enabled: false
+    gateway:
+      globalcors:
+        cors-configuration:
+          '[/**]':
+            allowedOrigins: '[*]'
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      discovery:
+        locator:
+          enabled: true # 开启注册中心路由功能
+      routes:
+        - id: admin-service
+          uri: lb://admin-service
+          predicates:
+            - Path=/application/admin/**
+        - id: basic-service
+          uri: lb://basic-service
+          predicates:
+            - Path=/application/basic/**
+config:
+  info: 前辈，Ciallo～(∠・ω< )⌒★

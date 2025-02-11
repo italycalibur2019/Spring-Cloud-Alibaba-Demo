@@ -1,0 +1,4 @@
+secure:
+  whitelist:
+    urls:
+      - /application/admin/auth
