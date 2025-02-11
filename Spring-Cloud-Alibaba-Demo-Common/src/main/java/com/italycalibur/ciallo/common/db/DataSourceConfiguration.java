@@ -32,4 +32,16 @@ public class DataSourceConfiguration {
     public DataSource dataSource3() {
         return new DruidDataSource();
     }
+
+    @Bean("dataSource4")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.datasource4")
+    public DataSource dataSource4() {
+        return new DruidDataSource();
+    }
+
+    @Bean("dataSource5")
+    @ConfigurationProperties(prefix = "spring.datasource.druid.datasource5")
+    public DataSource dataSource5() {
+        return new DruidDataSource();
+    }
 }

@@ -2,7 +2,7 @@
 
 CREATE DATABASE demo;
 
-USE demo;
+\c runoobdb;
 
 -- DROP SCHEMA sys;
 
@@ -53,3 +53,11 @@ COMMENT ON TABLE basic.t_goods_po IS '货物表';
 COMMENT ON COLUMN basic.t_goods_po.id IS '主键';
 COMMENT ON COLUMN basic.t_goods_po.goods_code IS '货物编号';
 COMMENT ON COLUMN basic.t_goods_po.goods_name IS '货物名称';
+
+-- DROP SCHEMA "order";
+
+CREATE SCHEMA "order" AUTHORIZATION postgres;
+
+-- DROP SCHEMA stock;
+
+CREATE SCHEMA stock AUTHORIZATION postgres;

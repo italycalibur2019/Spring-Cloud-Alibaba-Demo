@@ -30,6 +30,8 @@
         <module>Spring-Cloud-Alibaba-Demo-Basic</module>
         <module>Spring-Cloud-Alibaba-Demo-Gateway</module>
         <module>Spring-Cloud-Alibaba-Demo-Configuration</module>
+        <module>Spring-Cloud-Alibaba-Demo-Order</module>
+        <module>Spring-Cloud-Alibaba-Demo-Stock</module>
     </modules>
 
     <dependencyManagement>

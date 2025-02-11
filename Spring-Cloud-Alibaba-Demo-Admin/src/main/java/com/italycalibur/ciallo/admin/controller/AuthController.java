@@ -9,7 +9,6 @@ import com.italycalibur.ciallo.common.domain.user.UserInfo;
 import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
-import jdk.jshell.execution.Util;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
