@@ -1,6 +1,7 @@
 package com.italycalibur.ciallo.gateway.filter;
 
 import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.configuration.properties.SecureUrlProperty;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -27,6 +28,8 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     private RedisTemplate<String, Object> redisTemplate;
     @Resource
     private JwtTokenProperty jwtTokenProperty;
+    @Resource
+    private SecureUrlProperty secureUrlProperty;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -66,7 +69,12 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
      * @return true：不需要过滤
      */
     private boolean shouldNotFilter(String url) {
-        return url.startsWith("/application/admin/auth/login");
+        for (String s : secureUrlProperty.getUrls()) {
+            if (url.startsWith(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
