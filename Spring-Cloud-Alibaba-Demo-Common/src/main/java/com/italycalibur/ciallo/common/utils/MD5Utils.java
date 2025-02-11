@@ -54,9 +54,13 @@ public class MD5Utils {
         return md5Decode(source, MD5_SALT, encode);
     }
 
+    // 测试加密解密
     public static void main(String[] args) {
+        // 查看加密效果
         System.out.println(md5Encode("abc1234."));
-
-        System.out.println(md5Decode("123456", "italycalibur"));
+        // result: false
+        System.out.println(md5Decode("123456", "654321"));
+        // result: true
+        System.out.println(md5Decode("123456", md5Encode("123456")));
     }
 }

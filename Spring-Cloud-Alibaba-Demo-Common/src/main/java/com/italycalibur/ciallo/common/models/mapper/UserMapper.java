@@ -18,6 +18,6 @@ public interface UserMapper extends BaseMapper<UserPO> {
      * @param username 用户名
      * @return UserPO
      */
-    @Select("select * from public.t_user_po where username = #{username}")
+    @Select("select * from sys.t_user_po where username = #{username}")
     UserPO selectByUsername(String username);
 }

@@ -10,5 +10,6 @@ import lombok.Data;
  */
 @Data
 public class GoodsDTO {
+    private String goodsCode;
     private String goodsName;
 }

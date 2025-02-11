@@ -16,7 +16,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "t_user_po")
+@TableName(value = "t_user_po", schema = "sys")
 public class UserPO extends BaseEntity {
     @TableField(value = "username")
     private String username;

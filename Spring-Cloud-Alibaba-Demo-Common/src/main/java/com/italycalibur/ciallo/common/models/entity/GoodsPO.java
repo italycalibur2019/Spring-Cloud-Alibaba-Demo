@@ -16,8 +16,11 @@ import lombok.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "t_goods_po")
+@TableName(value = "t_goods_po", schema = "basic")
 public class GoodsPO extends BaseEntity {
+    @TableField(value = "goods_code")
+    private String goodsCode;
+
     @TableField(value = "goods_name")
     private String goodsName;
 }

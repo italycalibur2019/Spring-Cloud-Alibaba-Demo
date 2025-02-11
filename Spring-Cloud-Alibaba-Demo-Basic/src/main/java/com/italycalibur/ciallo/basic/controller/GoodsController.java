@@ -32,8 +32,9 @@ public class GoodsController {
     }
 
     @PostMapping("/add")
-    public Result<String> save(@RequestBody GoodsPO params) {
+    public Result<String> add(@RequestBody GoodsDTO params) {
         GoodsPO goods = new GoodsPO();
+        goods.setGoodsCode(params.getGoodsCode());
         goods.setGoodsName(params.getGoodsName());
         goodsService.save(goods);
         return Result.ok("添加成功！");
