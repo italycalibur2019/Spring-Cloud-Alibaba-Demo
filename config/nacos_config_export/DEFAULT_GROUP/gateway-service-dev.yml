@@ -34,5 +34,17 @@ spring:
           uri: lb://basic-service
           predicates:
             - Path=/application/basic/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/application/order/**
+        - id: stock-service
+          uri: lb://stock-service
+          predicates:
+            - Path=/application/stock/**
+        - id: fee-service
+          uri: lb://fee-service
+          predicates:
+            - Path=/application/fee/**
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★
