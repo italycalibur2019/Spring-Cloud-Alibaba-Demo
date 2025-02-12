@@ -1,0 +1,1 @@
+package com.italycalibur.ciallo.stock.vo;
