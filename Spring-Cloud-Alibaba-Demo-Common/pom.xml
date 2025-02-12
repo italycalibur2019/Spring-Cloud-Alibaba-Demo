@@ -7,7 +7,6 @@
         <groupId>com.italycalibur.ciallo</groupId>
         <artifactId>Spring-Cloud-Alibaba-Demo</artifactId>
         <version>1.0-SNAPSHOT</version>
-<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
     <artifactId>Spring-Cloud-Alibaba-Demo-Common</artifactId>

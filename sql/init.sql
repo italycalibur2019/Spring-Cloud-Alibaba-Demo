@@ -61,3 +61,7 @@ CREATE SCHEMA "order" AUTHORIZATION postgres;
 -- DROP SCHEMA stock;
 
 CREATE SCHEMA stock AUTHORIZATION postgres;
+
+-- DROP SCHEMA fee;
+
+CREATE SCHEMA fee AUTHORIZATION postgres;
