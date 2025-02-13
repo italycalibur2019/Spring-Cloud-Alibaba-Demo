@@ -6,7 +6,7 @@ import com.italycalibur.ciallo.admin.service.IAuthService;
 import com.italycalibur.ciallo.admin.vo.LoginVO;
 import com.italycalibur.ciallo.common.constants.ResultCode;
 import com.italycalibur.ciallo.common.domain.user.UserInfo;
-import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

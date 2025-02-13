@@ -1,7 +1,7 @@
 package com.italycalibur.ciallo.gateway.filter;
 
-import com.italycalibur.ciallo.configuration.properties.JwtTokenProperty;
-import com.italycalibur.ciallo.configuration.properties.SecureUrlProperty;
+import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.common.configuration.properties.SecureUrlProperty;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;

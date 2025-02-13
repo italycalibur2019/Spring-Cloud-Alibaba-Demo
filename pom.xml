@@ -22,6 +22,7 @@
         <druid.version>1.2.23</druid.version>
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
         <jjwt.version>0.12.6</jjwt.version>
+        <fastjson.version>2.0.54</fastjson.version>
     </properties>
 
     <modules>
@@ -29,7 +30,6 @@
         <module>Spring-Cloud-Alibaba-Demo-Admin</module>
         <module>Spring-Cloud-Alibaba-Demo-Basic</module>
         <module>Spring-Cloud-Alibaba-Demo-Gateway</module>
-        <module>Spring-Cloud-Alibaba-Demo-Configuration</module>
         <module>Spring-Cloud-Alibaba-Demo-Order</module>
         <module>Spring-Cloud-Alibaba-Demo-Stock</module>
         <module>Spring-Cloud-Alibaba-Demo-Fee</module>
@@ -102,6 +102,12 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
+            </dependency>
+            <!-- fastjson2 json序列化 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

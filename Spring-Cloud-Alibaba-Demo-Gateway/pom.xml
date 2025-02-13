@@ -65,7 +65,7 @@
 
         <dependency>
             <groupId>com.italycalibur.ciallo</groupId>
-            <artifactId>Spring-Cloud-Alibaba-Demo-Configuration</artifactId>
+            <artifactId>Spring-Cloud-Alibaba-Demo-Common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

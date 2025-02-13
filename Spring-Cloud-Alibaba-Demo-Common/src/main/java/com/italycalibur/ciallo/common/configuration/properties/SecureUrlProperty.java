@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.configuration.properties;
+package com.italycalibur.ciallo.common.configuration.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
