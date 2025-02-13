@@ -15,4 +15,12 @@ public class ResultCode {
      * 失败
      */
     public static final int FAILURE = 500;
+    /**
+     * 未授权
+     */
+    public static final int UNAUTHORIZED = 401;
+    /**
+     * 禁止访问
+     */
+    public static final int FORBIDDEN = 403;
 }

@@ -2,6 +2,7 @@ package com.italycalibur.ciallo.gateway.filter;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.configuration.properties.SecureUrlProperty;
+import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -88,7 +89,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 
-        String errorMsg = "{\"error\":\"用户未登录或登录超时，请重新登录！\"}";
+        String errorMsg = Result.unauthorized().asJsonString();
 
         return response.writeWith(Mono.just(response.bufferFactory().wrap(errorMsg.getBytes())));
     }

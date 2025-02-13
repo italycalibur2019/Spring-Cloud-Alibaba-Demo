@@ -37,14 +37,14 @@ public class AuthController {
         // 获取token
         String token = authService.login(params.getUsername(), params.getPassword());
         if (ObjectUtils.isEmpty(token) || !token.contains(jwtTokenProperty.getPrefix())) {
-            return Result.error(ResultCode.FAILURE, "登录失败：" + token);
+            return Result.error("登录失败：" + token);
         }
         // 解析用户信息
         LoginVO loginVo = new LoginVO();
         loginVo.setToken(token);
         UserInfo userInfo = authService.getUserInfo(token);
         if (ObjectUtils.isEmpty(userInfo)) {
-            return Result.error(ResultCode.FAILURE, "登录失败：用户信息解析有误");
+            return Result.error("登录失败：用户信息解析有误");
         }
         loginVo.setUserInfo(userInfo);
 
@@ -55,7 +55,7 @@ public class AuthController {
     public Result<String> register(@RequestBody RegisterDTO params) {
         String result = authService.register(params);
         if (StringUtils.hasLength(result)) {
-            return Result.error(ResultCode.FAILURE, "注册失败：" + result);
+            return Result.error("注册失败：" + result);
         }
         return Result.ok("注册成功！");
     }
