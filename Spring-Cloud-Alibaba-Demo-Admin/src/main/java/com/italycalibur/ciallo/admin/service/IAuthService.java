@@ -1,7 +1,6 @@
 package com.italycalibur.ciallo.admin.service;
 
 import com.italycalibur.ciallo.admin.dto.RegisterDTO;
-import com.italycalibur.ciallo.common.domain.user.UserInfo;
 
 /**
  * @author dhr
@@ -10,21 +9,6 @@ import com.italycalibur.ciallo.common.domain.user.UserInfo;
  * @description: TODO
  */
 public interface IAuthService {
-    /**
-     * 登录
-     * @param username 用户名
-     * @param password 密码
-     * @return String
-     */
-    String login(String username, String password);
-
-    /**
-     * 从token获取用户信息
-     * @param token 登录令牌
-     * @return UserInfo
-     */
-    UserInfo getUserInfo(String token);
-
     /**
      * 注册
      * @param params 注册信息

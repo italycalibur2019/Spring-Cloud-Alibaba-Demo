@@ -1,18 +1,20 @@
-package com.italycalibur.ciallo.common.domain.user;
+package com.italycalibur.ciallo.gateway.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @description: 登录用户信息
  * @author dhr
- * @date 2025-02-11 11:23:58
  * @version 1.0
+ * @date 2025-02-14 02:42:25
+ * @description: 用户信息展示
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserInfo {
     private String username;
+
+    private String[] roles;
 }

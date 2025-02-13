@@ -1,6 +1,7 @@
 package com.italycalibur.ciallo.common.utils;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;

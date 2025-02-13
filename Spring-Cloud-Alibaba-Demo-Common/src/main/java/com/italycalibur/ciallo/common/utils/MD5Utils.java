@@ -20,7 +20,7 @@ public class MD5Utils {
      * @param salt 盐
      * @return 加密后的字符串
      */
-    public static String md5Encode(String source, String salt) {
+    public static String md5Encode(CharSequence source, String salt) {
         return DigestUtils.md5DigestAsHex((source + salt).getBytes(StandardCharsets.UTF_8));
     }
 
@@ -29,7 +29,7 @@ public class MD5Utils {
      * @param source 待加密字符串
      * @return 加密后的字符串
      */
-    public static String md5Encode(String source) {
+    public static String md5Encode(CharSequence source) {
         return md5Encode(source, MD5_SALT);
     }
 
@@ -40,7 +40,7 @@ public class MD5Utils {
      * @param encode 待比较字符串
      * @return 解密结果
      */
-    public static boolean md5Decode(String source, String salt, String encode) {
+    public static boolean md5Decode(CharSequence source, String salt, String encode) {
         return md5Encode(source, salt).equals(encode);
     }
 
@@ -50,7 +50,7 @@ public class MD5Utils {
      * @param encode 待比较字符串
      * @return 解密结果
      */
-    public static boolean md5Decode(String source, String encode) {
+    public static boolean md5Decode(CharSequence source, String encode) {
         return md5Decode(source, MD5_SALT, encode);
     }
 

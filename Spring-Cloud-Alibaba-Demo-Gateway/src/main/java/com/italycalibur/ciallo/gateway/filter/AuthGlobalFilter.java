@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -46,13 +46,13 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         }
         // 获取token信息
         String token = request.getHeaders().getFirst(jwtTokenProperty.getHeader());
-        if (ObjectUtils.isEmpty(token)) {
-            return unAuthorize(response);
+        if (!StringUtils.hasLength(token)) {
+            return getUnAuthorizedMono(response);
         }
         // 验证redis中是否存在token
         String realToken = token.substring(jwtTokenProperty.getPrefix().length());
-        if (ObjectUtils.isEmpty(realToken) || !redisTemplate.hasKey(realToken)) {
-            return unAuthorize(response);
+        if (!StringUtils.hasLength(realToken) || !redisTemplate.hasKey(realToken)) {
+            return getUnAuthorizedMono(response);
         }
         // 把新的exchange 放回到过滤链
         ServerHttpRequest newRequest = request.mutate().header(jwtTokenProperty.getHeader(), token).build();
@@ -61,7 +61,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
 
     @Override
-    public int getOrder() { return -100; }
+    public int getOrder() { return Integer.MIN_VALUE; }
 
     /**
      * 是否需要过滤
@@ -84,7 +84,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
      * @param response 响应对象
      * @return 响应对象
      */
-    private Mono<Void> unAuthorize(ServerHttpResponse response) {
+    private Mono<Void> getUnAuthorizedMono(ServerHttpResponse response) {
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
 
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
