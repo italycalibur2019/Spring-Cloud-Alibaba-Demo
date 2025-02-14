@@ -1,10 +1,15 @@
-package com.italycalibur.ciallo.gateway.security;
+package com.italycalibur.ciallo.security.configuration;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.configuration.properties.SecureUrlProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
-import com.italycalibur.ciallo.gateway.handler.*;
+import com.italycalibur.ciallo.security.filter.JwtTokenAuthenticationFilter;
+import com.italycalibur.ciallo.security.MD5PasswordEncoder;
+import com.italycalibur.ciallo.security.handler.LoginFailureHandler;
+import com.italycalibur.ciallo.security.handler.LoginSuccessHandler;
+import com.italycalibur.ciallo.security.handler.LogoutSuccessHandler;
+import com.italycalibur.ciallo.security.service.AuthUserDetailsService;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,20 +50,23 @@ public class SecurityConfig {
     }
 
     @Bean
-    public ReactiveAuthenticationManager reactiveAuthenticationManager(AuthUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-        UserDetailsRepositoryReactiveAuthenticationManager authenticationManager = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
+    public ReactiveAuthenticationManager reactiveAuthenticationManager(
+            AuthUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        UserDetailsRepositoryReactiveAuthenticationManager authenticationManager
+                = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
         authenticationManager.setPasswordEncoder(passwordEncoder);
         return authenticationManager;
     }
 
     @Bean
-    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http,
-                                                         LoginSuccessHandler loginSuccessHandler,
-                                                         LoginFailureHandler loginFailureHandler,
-                                                         LogoutSuccessHandler logoutSuccessHandler,
-                                                         JwtTokenProperty property,
-                                                         JwtUtils utils,
-                                                         ReactiveAuthenticationManager authenticationManager) {
+    public SecurityWebFilterChain securityWebFilterChain(
+            ServerHttpSecurity http,
+            LoginSuccessHandler loginSuccessHandler,
+            LoginFailureHandler loginFailureHandler,
+            LogoutSuccessHandler logoutSuccessHandler,
+            JwtTokenProperty property,
+            JwtUtils utils,
+            ReactiveAuthenticationManager authenticationManager) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)

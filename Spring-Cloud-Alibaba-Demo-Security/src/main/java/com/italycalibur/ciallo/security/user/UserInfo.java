@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.gateway.user;
+package com.italycalibur.ciallo.security.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,11 +1,10 @@
-package com.italycalibur.ciallo.gateway.handler;
+package com.italycalibur.ciallo.security.filter;
 
 import com.alibaba.fastjson2.JSON;
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
-import com.italycalibur.ciallo.gateway.user.AuthUserDetails;
+import com.italycalibur.ciallo.security.user.AuthUserDetails;
 import io.jsonwebtoken.Claims;
-import jakarta.annotation.Resource;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

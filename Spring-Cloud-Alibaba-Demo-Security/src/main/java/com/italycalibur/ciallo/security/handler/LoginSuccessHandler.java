@@ -1,11 +1,12 @@
-package com.italycalibur.ciallo.gateway.handler;
+package com.italycalibur.ciallo.security.handler;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.constants.ResultCode;
 import com.italycalibur.ciallo.common.domain.Result;
 import com.italycalibur.ciallo.common.exception.CialloException;
-import com.italycalibur.ciallo.gateway.user.AuthUserDetails;
-import com.italycalibur.ciallo.gateway.user.UserInfo;
+import com.italycalibur.ciallo.security.service.AuthUserDetailsService;
+import com.italycalibur.ciallo.security.user.AuthUserDetails;
+import com.italycalibur.ciallo.security.user.UserInfo;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;

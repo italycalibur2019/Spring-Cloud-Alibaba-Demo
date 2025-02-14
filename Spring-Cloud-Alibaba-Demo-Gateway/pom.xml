@@ -64,18 +64,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.italycalibur.ciallo</groupId>
-            <artifactId>Spring-Cloud-Alibaba-Demo-Common</artifactId>
+            <artifactId>Spring-Cloud-Alibaba-Demo-Security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

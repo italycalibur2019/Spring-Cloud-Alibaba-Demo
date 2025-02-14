@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.gateway.security;
+package com.italycalibur.ciallo.security;
 
 import com.italycalibur.ciallo.common.utils.MD5Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;

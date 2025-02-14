@@ -1,6 +1,8 @@
-package com.italycalibur.ciallo.gateway.user;
+package com.italycalibur.ciallo.security.user;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,13 +16,11 @@ import java.util.List;
  * @description: 自定义用户详情
  */
 @Data
-public class AuthUserDetails implements UserDetails {
-
-    private String username;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class AuthUserDetails extends UserInfo implements UserDetails {
 
     private String password;
-
-    private String[] roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -34,7 +34,7 @@ public class AuthUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.username;
+        return super.getUsername();
     }
 
     @Override
