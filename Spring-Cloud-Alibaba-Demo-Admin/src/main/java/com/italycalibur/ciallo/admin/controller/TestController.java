@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 1.0
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/application/admin")
 @RefreshScope
 public class TestController {
     @Value("${spring.application.name}")
