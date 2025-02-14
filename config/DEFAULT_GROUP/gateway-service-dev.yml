@@ -24,27 +24,40 @@ spring:
               - DELETE
       discovery:
         locator:
-          enabled: true # 开启注册中心路由功能
+          # 开启注册中心路由功能
+          enabled: true
+          # 将请求路径上的服务名配置为小写
+          lower-case-service-id: true
       routes:
         - id: admin-service
           uri: lb://admin-service
           predicates:
-            - Path=/application/admin/**
+            - Path=/admin/**
+          filters:
+            - PrefixPath=/application
         - id: basic-service
           uri: lb://basic-service
           predicates:
-            - Path=/application/basic/**
+            - Path=/basic/**
+          filters:
+            - PrefixPath=/application
         - id: order-service
           uri: lb://order-service
           predicates:
-            - Path=/application/order/**
+            - Path=/order/**
+          filters:
+            - PrefixPath=/application
         - id: stock-service
           uri: lb://stock-service
           predicates:
-            - Path=/application/stock/**
+            - Path=/stock/**
+          filters:
+            - PrefixPath=/application
         - id: fee-service
           uri: lb://fee-service
           predicates:
-            - Path=/application/fee/**
+            - Path=/fee/**
+          filters:
+            - PrefixPath=/application
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★

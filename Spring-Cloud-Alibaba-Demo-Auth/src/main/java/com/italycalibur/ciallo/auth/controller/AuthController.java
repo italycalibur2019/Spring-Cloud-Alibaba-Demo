@@ -1,10 +1,9 @@
-package com.italycalibur.ciallo.admin.controller;
+package com.italycalibur.ciallo.auth.controller;
 
-import com.italycalibur.ciallo.admin.dto.RegisterDTO;
-import com.italycalibur.ciallo.admin.service.IAuthService;
+import com.italycalibur.ciallo.auth.dto.RegisterDTO;
+import com.italycalibur.ciallo.auth.service.IAuthService;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description: 访问管理
  */
 @RestController
-@RequestMapping("/application/admin/auth")
-@RefreshScope
+@RequestMapping("/admin/auth")
 public class AuthController {
     @Resource
     private IAuthService authService;

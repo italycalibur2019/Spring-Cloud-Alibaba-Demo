@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.admin.dto;
+package com.italycalibur.ciallo.auth.dto;
 
 import lombok.Data;
 

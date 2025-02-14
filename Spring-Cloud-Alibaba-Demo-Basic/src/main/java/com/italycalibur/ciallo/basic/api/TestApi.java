@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description: 测试提供接口
  */
 @RestController
-@RequestMapping("/application/basic/api")
+@RequestMapping("/basic/api")
 public class TestApi {
     @PostMapping("/testApi")
     public String testApi(@RequestBody GoodsPO goods) {

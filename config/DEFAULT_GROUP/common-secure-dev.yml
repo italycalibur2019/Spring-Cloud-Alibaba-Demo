@@ -1,4 +1,6 @@
 secure:
   whitelist:
     urls:
-      - /application/admin/auth
+      - /auth/login
+      - /auth/register
+      - /auth/logout

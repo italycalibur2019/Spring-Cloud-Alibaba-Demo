@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: auth-service
+  config:
+    import:
+      - nacos:auth-service-dev.yml
+      - nacos:common-db-dev.yml
+      - nacos:common-redis-dev.yml
+      - nacos:common-jwt-dev.yml
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml

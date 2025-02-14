@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 @FeignClient(value = "basic-service")
 public interface TestApiFeignClient {
-    @PostMapping("/application/basic/api/testApi")
+    @PostMapping("/basic/api/testApi")
     String testApi(@RequestBody GoodsPO goods);
 }
