@@ -12,6 +12,7 @@
 * mybatis plus —— ORM框架（√）
 * druid —— 数据库连接池/多数据源（√）
 * maven archetype —— 微服务脚手架：[传送门](https://github.com/italycalibur2019/micro-service-demo)
+* 2025-02-15新增：xxl-job —— 定时任务调度（√）：[传送门](https://github.com/italycalibur2019/xxl-job-pg/tree/master-pg)
 * （后续想到要做什么再更新）
 ## 背景
 利用微服务架构，实现一个基本的WMS系统，包含：
@@ -35,3 +36,4 @@
 * Spring Boot 3.3.8 
 * Spring Cloud Alibaba 2023.0.3.2 (最新的Spring Boot 3.4.X不行，启动时直接提示不兼容，这是学习的第一个坑)
 * Spring Cloud 2023.0.2 (同样只支持Spring Boot 3.3.X)
+* 2025-02-15新增：xxl-job 3.0.0 (感谢许雪里大佬！这一版是第一次适配Spring Boot 3，学习了一小时左右就启动成功了！)
