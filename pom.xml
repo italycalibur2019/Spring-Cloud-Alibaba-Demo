@@ -23,6 +23,7 @@
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
         <jjwt.version>0.12.6</jjwt.version>
         <fastjson.version>2.0.54</fastjson.version>
+        <xxl-job.version>3.0.0</xxl-job.version>
     </properties>
 
     <modules>
@@ -35,6 +36,7 @@
         <module>Spring-Cloud-Alibaba-Demo-Fee</module>
         <module>Spring-Cloud-Alibaba-Demo-Security</module>
         <module>Spring-Cloud-Alibaba-Demo-Auth</module>
+        <module>Spring-Cloud-Alibaba-Demo-Task</module>
     </modules>
 
     <dependencyManagement>
@@ -110,6 +112,12 @@
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <!-- xxl-job 分布式任务执行 -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

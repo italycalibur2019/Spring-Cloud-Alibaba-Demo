@@ -1,0 +1,34 @@
+server:
+  port: 9086
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+config:
+  info: 前辈，Ciallo～(∠・ω< )⌒★
+
+### xxl-job 配置文件
+xxl:
+  job:
+    ## xxl-job admin 配置
+    admin:
+      # 项目地址
+      addresses: http://127.0.0.1:8084/xxl-job-admin
+      # 访问令牌
+      accessToken: default_token
+      # 超时时长（单位/s）, 默认3s
+      timeout: 3
+    ## xxl-job executor 配置
+    executor:
+      # 服务名称
+      appname: ${spring.application.name}
+      # 服务地址，为空则以ip:port方式获取
+      address:
+      # IP地址，为空则自动获取
+      ip: localhost
+      # 端口号
+      port: 9721
+      # 日志路劲
+      logpath: /data/applogs/xxl-job/jobhandler
+      # 日志保留时长（单位/天）
+      logretentiondays: 30
