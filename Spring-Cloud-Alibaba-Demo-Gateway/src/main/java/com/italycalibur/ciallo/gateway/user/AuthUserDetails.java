@@ -1,5 +1,6 @@
-package com.italycalibur.ciallo.security.user;
+package com.italycalibur.ciallo.gateway.user;
 
+import com.italycalibur.ciallo.common.models.entity.UserPO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -7,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author dhr
@@ -18,18 +19,18 @@ import java.util.List;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class AuthUserDetails extends UserInfo implements UserDetails {
+public class AuthUserDetails extends UserPO implements UserDetails {
 
-    private String password;
+    private Set<GrantedAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return this.authorities;
     }
 
     @Override
     public String getPassword() {
-        return this.password;
+        return super.getPassword();
     }
 
     @Override

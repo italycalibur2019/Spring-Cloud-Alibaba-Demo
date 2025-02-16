@@ -73,6 +73,8 @@ public class JwtUtils {
     public Claims parseToken(String token) {
         if (token.contains(jwtTokenProperty.getPrefix())) {
             token = token.substring(jwtTokenProperty.getPrefix().length());
+        }else {
+            return null;
         }
         // 密钥
         SecretKey key = generateKey();

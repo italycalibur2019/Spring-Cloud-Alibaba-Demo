@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.security.user;
+package com.italycalibur.ciallo.gateway.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfo {
+    private Long id;
+
     private String username;
 
-    private String[] roles;
+    private String roles;
 }

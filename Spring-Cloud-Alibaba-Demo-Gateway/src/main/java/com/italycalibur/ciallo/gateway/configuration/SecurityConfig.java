@@ -1,15 +1,15 @@
-package com.italycalibur.ciallo.security.configuration;
+package com.italycalibur.ciallo.gateway.configuration;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.configuration.properties.SecureUrlProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
-import com.italycalibur.ciallo.security.filter.JwtTokenAuthenticationFilter;
-import com.italycalibur.ciallo.security.MD5PasswordEncoder;
-import com.italycalibur.ciallo.security.handler.LoginFailureHandler;
-import com.italycalibur.ciallo.security.handler.LoginSuccessHandler;
-import com.italycalibur.ciallo.security.handler.LogoutSuccessHandler;
-import com.italycalibur.ciallo.security.service.AuthUserDetailsService;
+import com.italycalibur.ciallo.gateway.filter.JwtTokenAuthenticationFilter;
+import com.italycalibur.ciallo.gateway.security.MD5PasswordEncoder;
+import com.italycalibur.ciallo.gateway.handler.LoginFailureHandler;
+import com.italycalibur.ciallo.gateway.handler.LoginSuccessHandler;
+import com.italycalibur.ciallo.gateway.handler.LogoutSuccessHandler;
+import com.italycalibur.ciallo.gateway.service.AuthUserDetailsService;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,6 +64,7 @@ public class SecurityConfig {
             LoginSuccessHandler loginSuccessHandler,
             LoginFailureHandler loginFailureHandler,
             LogoutSuccessHandler logoutSuccessHandler,
+            AuthUserDetailsService authUserDetailsService,
             JwtTokenProperty property,
             JwtUtils utils,
             ReactiveAuthenticationManager authenticationManager) {
@@ -90,7 +91,7 @@ public class SecurityConfig {
                         .logoutUrl("/auth/logout")// 登出地址
                         .logoutSuccessHandler(logoutSuccessHandler) // 登出成功处理器
                 )
-                .addFilterAt(new JwtTokenAuthenticationFilter(property, utils), SecurityWebFiltersOrder.HTTP_BASIC)
+                .addFilterAt(new JwtTokenAuthenticationFilter(property, utils, authUserDetailsService), SecurityWebFiltersOrder.HTTP_BASIC)
                 .build();
     }
 

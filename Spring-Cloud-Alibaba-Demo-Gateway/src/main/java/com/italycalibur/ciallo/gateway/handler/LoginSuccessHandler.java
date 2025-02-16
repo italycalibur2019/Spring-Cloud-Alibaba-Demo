@@ -1,12 +1,12 @@
-package com.italycalibur.ciallo.security.handler;
+package com.italycalibur.ciallo.gateway.handler;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
 import com.italycalibur.ciallo.common.constants.ResultCode;
 import com.italycalibur.ciallo.common.domain.Result;
 import com.italycalibur.ciallo.common.exception.CialloException;
-import com.italycalibur.ciallo.security.service.AuthUserDetailsService;
-import com.italycalibur.ciallo.security.user.AuthUserDetails;
-import com.italycalibur.ciallo.security.user.UserInfo;
+import com.italycalibur.ciallo.gateway.service.AuthUserDetailsService;
+import com.italycalibur.ciallo.gateway.user.AuthUserDetails;
+import com.italycalibur.ciallo.gateway.user.UserInfo;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -52,19 +52,18 @@ public class LoginSuccessHandler extends WebFilterChainServerAuthenticationSucce
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
         response.getHeaders().setCacheControl("no-store,no-cache,must-revalidate,max-age-8");
         try {
-            User user = (User) authentication.getPrincipal();
-            AuthUserDetails authUserDetails = getUserDetails(user);
+            AuthUserDetails user = (AuthUserDetails) authentication.getPrincipal();
+            UserInfo userInfo = getUserInfo(user.getUsername(), user.getPassword());
             // jwt生成token
-            Map<String, Object> claims = Map.of( "user-info", authUserDetails);
+            Map<String, Object> claims = Map.of( "id", userInfo.getId(),
+                    "username", userInfo.getUsername(),
+                    "roles", userInfo.getRoles());
             String token = jwtUtils.createToken(claims);
             // 添加前缀
             String headerToken = jwtTokenProperty.getPrefix() + token;
             // redis存储token
             redisTemplate.opsForValue().set(token, headerToken, jwtTokenProperty.getExpireTime(), TimeUnit.MILLISECONDS);
-            UserInfo userInfo = new UserInfo();
-            userInfo.setUsername(authUserDetails.getUsername());
-            userInfo.setRoles(authUserDetails.getRoles());
-            Map<String, Object> map = Map.of("user-info", userInfo, "token", headerToken);
+            Map<String, Object> map = Map.of("userInfo", userInfo, "token", headerToken);
             Result<Map<String, Object>> result = Result.ok(map);
             return response.writeWith(Mono.just(response.bufferFactory().wrap(result.asJsonString().getBytes())));
         } catch (Exception e) {
@@ -73,16 +72,21 @@ public class LoginSuccessHandler extends WebFilterChainServerAuthenticationSucce
         }
     }
 
-    private AuthUserDetails getUserDetails(User user) {
-        Mono<UserDetails> userMono = userDetailsService.findByUsername(user.getUsername());
-        UserDetails userDetails = userMono.block();
-        if (ObjectUtils.isEmpty(userDetails) || !user.getPassword().equals(userDetails.getPassword())) {
+    private UserInfo getUserInfo(String username, String password) {
+        Mono<UserDetails> userMono = userDetailsService.findByUsername(username);
+        AuthUserDetails userDetails = (AuthUserDetails) userMono.block();
+        if (ObjectUtils.isEmpty(userDetails) || !password.equals(userDetails.getPassword())) {
             throw new CialloException("用户名或密码错误！");
         }else {
-            AuthUserDetails userInfo = new AuthUserDetails();
-            userInfo.setUsername(user.getUsername());
-            userInfo.setPassword(user.getPassword());
-            userInfo.setRoles(userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new));
+            UserInfo userInfo = new UserInfo();
+            userInfo.setId(userDetails.getId());
+            userInfo.setUsername(userDetails.getUsername());
+            Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+            Set<String> roleSet = new HashSet<>();
+            for (GrantedAuthority authority : authorities) {
+                roleSet.add(authority.getAuthority());
+            }
+            userInfo.setRoles(String.join(",", roleSet));
             return userInfo;
         }
     }

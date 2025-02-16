@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.security.handler;
+package com.italycalibur.ciallo.gateway.handler;
 
 import com.italycalibur.ciallo.common.domain.Result;
 import org.springframework.http.MediaType;

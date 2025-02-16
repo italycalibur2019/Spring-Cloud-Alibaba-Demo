@@ -1,10 +1,13 @@
-package com.italycalibur.ciallo.security.filter;
+package com.italycalibur.ciallo.gateway.filter;
 
-import com.alibaba.fastjson2.JSON;
+import cn.hutool.core.convert.Convert;
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
+import com.italycalibur.ciallo.common.models.entity.UserPO;
+import com.italycalibur.ciallo.common.models.mapper.UserMapper;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
-import com.italycalibur.ciallo.security.user.AuthUserDetails;
+import com.italycalibur.ciallo.gateway.service.AuthUserDetailsService;
 import io.jsonwebtoken.Claims;
+import jakarta.annotation.Resource;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -32,10 +36,12 @@ import java.util.List;
 public class JwtTokenAuthenticationFilter implements WebFilter {
     private final JwtUtils jwtUtils;
     private final JwtTokenProperty jwtTokenProperty;
+    private final AuthUserDetailsService userDetailsService;
 
-    public JwtTokenAuthenticationFilter(JwtTokenProperty jwtTokenProperty, JwtUtils jwtUtils) {
+    public JwtTokenAuthenticationFilter(JwtTokenProperty jwtTokenProperty, JwtUtils jwtUtils, AuthUserDetailsService userDetailsService) {
         this.jwtTokenProperty = jwtTokenProperty;
         this.jwtUtils = jwtUtils;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -62,19 +68,25 @@ public class JwtTokenAuthenticationFilter implements WebFilter {
 
     public Authentication getAuthentication(String token) {
         Claims claims = jwtUtils.parseToken(token);
-        Object o = claims.get("user-info");
-        if (ObjectUtils.isEmpty(claims) || ObjectUtils.isEmpty(o)) {
+        if (ObjectUtils.isEmpty(claims)) {
             return null;
         }
-        String jsonString = JSON.toJSONString(o);
-        AuthUserDetails userInfo = JSON.parseObject(jsonString, AuthUserDetails.class);
+        String username = Convert.toStr(claims.get("username"), "");
+        if (!StringUtils.hasLength(username)) {
+            return null;
+        }
+        Mono<UserDetails> userDetailsMono = userDetailsService.findByUsername(username);
+        UserDetails userDetails = userDetailsMono.block();
         User principal;
-        List<GrantedAuthority> grantedAuthorities;
-        if (ObjectUtils.isEmpty(userInfo)) {
+        if (ObjectUtils.isEmpty(userDetails)) {
             return null;
         } else {
-            grantedAuthorities = AuthorityUtils.createAuthorityList(userInfo.getRoles());
-            principal = new User(userInfo.getUsername(), userInfo.getPassword(), grantedAuthorities);
+            String roles = Convert.toStr(claims.get("roles"), "");
+            if (!StringUtils.hasLength(roles)) {
+                return null;
+            }
+            List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+            principal = new User(userDetails.getUsername(), userDetails.getPassword(), grantedAuthorities);
             return new UsernamePasswordAuthenticationToken(principal, token, grantedAuthorities);
         }
     }

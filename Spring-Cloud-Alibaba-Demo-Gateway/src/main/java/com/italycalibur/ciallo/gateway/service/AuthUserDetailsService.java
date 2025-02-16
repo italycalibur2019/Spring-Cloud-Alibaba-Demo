@@ -1,13 +1,17 @@
-package com.italycalibur.ciallo.security.service;
+package com.italycalibur.ciallo.gateway.service;
 
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import com.italycalibur.ciallo.common.models.mapper.UserMapper;
+import com.italycalibur.ciallo.gateway.user.AuthUserDetails;
 import jakarta.annotation.Resource;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author dhr
@@ -22,7 +26,16 @@ public class AuthUserDetailsService implements ReactiveUserDetailsService {
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         UserPO userPO = userMapper.selectByUsername(username);
-        UserDetails user = User.withUsername(username).password(userPO.getPassword()).roles("admin").authorities("admin").build();
+        AuthUserDetails user = new AuthUserDetails();
+        user.setId(userPO.getId());
+        user.setUsername(userPO.getUsername());
+        user.setPassword(userPO.getPassword());
+        String[] roles = {"admin"};
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        for (String role : roles) {
+            authorities.add((GrantedAuthority) () -> role);
+        }
+        user.setAuthorities(authorities);
         return Mono.just(user);
     }
 }
