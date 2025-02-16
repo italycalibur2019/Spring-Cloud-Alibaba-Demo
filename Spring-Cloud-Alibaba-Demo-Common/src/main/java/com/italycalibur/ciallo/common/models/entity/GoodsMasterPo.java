@@ -1,23 +1,30 @@
 package com.italycalibur.ciallo.common.models.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
+
 import com.italycalibur.ciallo.common.domain.BaseEntity;
 import lombok.*;
 
 /**
- * @author dhr
- * @version 1.0
- * @date 2025-02-07 20:56:46
- * @description: 货物表
+ * <p>
+ * 货主表
+ * </p>
+ *
+ * @author italycalibur
+ * @since 2025-02-16
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@TableName(value = "t_goods_po", schema = "basic")
-public class GoodsPO extends BaseEntity {
-    private String goodsCode;
+@TableName(value = "t_goods_master_po", schema = "basic")
+public class GoodsMasterPo extends BaseEntity {
 
-    private String goodsName;
+    private String masterName;
+
+    private String phone;
+
+    private String remark;
 }

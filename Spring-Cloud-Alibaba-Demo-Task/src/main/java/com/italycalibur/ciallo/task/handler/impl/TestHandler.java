@@ -1,6 +1,6 @@
-package com.italycalibur.ciallo.task.service.impl;
+package com.italycalibur.ciallo.task.handler.impl;
 
-import com.italycalibur.ciallo.task.service.ITestService;
+import com.italycalibur.ciallo.task.handler.ITestHandler;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
  * @description: 测试服务实现
  */
 @Service
-public class TestService implements ITestService {
+public class TestHandler implements ITestHandler {
     @Override
-    public String testServiceA() {
+    public String testMethodA() {
         return "This is Method A! ";
     }
 
     @Override
-    public String testServiceB() {
+    public String testMethodB() {
         return "This is Method B! ";
     }
 }

@@ -1,6 +1,5 @@
 package com.italycalibur.ciallo.common.models.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.italycalibur.ciallo.common.domain.BaseEntity;
 import lombok.*;
@@ -18,9 +17,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @TableName(value = "t_user_po", schema = "sys")
 public class UserPO extends BaseEntity {
-    @TableField(value = "username")
     private String username;
 
-    @TableField(value = "password")
     private String password;
 }

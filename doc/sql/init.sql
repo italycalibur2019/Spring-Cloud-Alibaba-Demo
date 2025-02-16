@@ -54,6 +54,28 @@ COMMENT ON COLUMN basic.t_goods_po.id IS '主键';
 COMMENT ON COLUMN basic.t_goods_po.goods_code IS '货物编号';
 COMMENT ON COLUMN basic.t_goods_po.goods_name IS '货物名称';
 
+-- basic.t_goods_master_po definition
+
+-- Drop table
+
+-- DROP TABLE basic.t_goods_master_po;
+
+CREATE TABLE basic.t_goods_master_po (
+                                         id int8 NOT NULL, -- 主键
+                                         master_name varchar(100) NULL, -- 货主名称
+                                         phone varchar(20) NULL, -- 联系方式
+                                         remark text NULL, -- 备注
+                                         CONSTRAINT t_goods_master_po_pk PRIMARY KEY (id)
+);
+COMMENT ON TABLE basic.t_goods_master_po IS '货主表';
+
+-- Column comments
+
+COMMENT ON COLUMN basic.t_goods_master_po.id IS '主键';
+COMMENT ON COLUMN basic.t_goods_master_po.master_name IS '货主名称';
+COMMENT ON COLUMN basic.t_goods_master_po.phone IS '联系方式';
+COMMENT ON COLUMN basic.t_goods_master_po.remark IS '备注';
+
 -- DROP SCHEMA "order";
 
 CREATE SCHEMA "order" AUTHORIZATION postgres;
