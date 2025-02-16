@@ -24,11 +24,11 @@ xxl:
       appname: ${spring.application.name}
       # 服务地址，为空则以ip:port方式获取
       address:
-      # IP地址，为空则自动获取
-      ip: localhost
+      # IP地址，为空则自动获取（经测试不能写成localhost）
+      ip:
       # 端口号
       port: 9721
-      # 日志路劲
+      # 日志路径
       logpath: /data/applogs/xxl-job/jobhandler
       # 日志保留时长（单位/天）
       logretentiondays: 30
