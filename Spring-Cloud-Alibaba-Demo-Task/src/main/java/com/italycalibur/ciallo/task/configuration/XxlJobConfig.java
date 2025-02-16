@@ -1,5 +1,6 @@
 package com.italycalibur.ciallo.task.configuration;
 
+import cn.hutool.core.convert.Convert;
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -22,16 +23,15 @@ public class XxlJobConfig {
     public XxlJobSpringExecutor xxlJobExecutor() {
         log.info(">>>>>>>>>>> xxl-job config init.");
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
-        xxlJobSpringExecutor.setAdminAddresses(String.valueOf(property.getAdmin().get("addresses")));
-        xxlJobSpringExecutor.setAppname(String.valueOf(property.getExecutor().get("appname")));
-        xxlJobSpringExecutor.setAddress(String.valueOf(property.getExecutor().get("address")));
-        xxlJobSpringExecutor.setIp(String.valueOf(property.getExecutor().get("ip")));
-        xxlJobSpringExecutor.setPort(Integer.parseInt(String.valueOf(property.getExecutor().get("port"))));
-        xxlJobSpringExecutor.setAccessToken(String.valueOf(property.getAdmin().get("accessToken")));
-        xxlJobSpringExecutor.setTimeout(Integer.parseInt(String.valueOf(property.getAdmin().get("timeout"))));
-        xxlJobSpringExecutor.setLogPath(String.valueOf(property.getExecutor().get("logpath")));
-        xxlJobSpringExecutor.setLogRetentionDays(Integer.parseInt(String.valueOf(property.getExecutor().get("logretentiondays"))));
-
+        xxlJobSpringExecutor.setAdminAddresses(Convert.toStr(property.getAdmin().get("addresses")));
+        xxlJobSpringExecutor.setAppname(Convert.toStr(property.getExecutor().get("appname")));
+        xxlJobSpringExecutor.setAddress(Convert.toStr(property.getExecutor().get("address")));
+        xxlJobSpringExecutor.setIp(Convert.toStr(property.getExecutor().get("ip")));
+        xxlJobSpringExecutor.setPort(Convert.toInt(property.getExecutor().get("port")));
+        xxlJobSpringExecutor.setAccessToken(Convert.toStr(property.getAdmin().get("accessToken")));
+        xxlJobSpringExecutor.setTimeout(Convert.toInt(property.getAdmin().get("timeout")));
+        xxlJobSpringExecutor.setLogPath(Convert.toStr(property.getExecutor().get("logpath")));
+        xxlJobSpringExecutor.setLogRetentionDays(Convert.toInt(property.getExecutor().get("logretentiondays")));
         return xxlJobSpringExecutor;
     }
 }
