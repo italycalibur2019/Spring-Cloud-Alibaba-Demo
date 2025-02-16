@@ -1,13 +1,15 @@
-package com.italycalibur.ciallo.gateway.service;
+package com.italycalibur.ciallo.gateway.security.service;
 
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import com.italycalibur.ciallo.common.models.mapper.UserMapper;
-import com.italycalibur.ciallo.gateway.user.AuthUserDetails;
+
+import com.italycalibur.ciallo.gateway.security.user.AuthUserDetails;
 import jakarta.annotation.Resource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
@@ -26,6 +28,9 @@ public class AuthUserDetailsService implements ReactiveUserDetailsService {
     @Override
     public Mono<UserDetails> findByUsername(String username) {
         UserPO userPO = userMapper.selectByUsername(username);
+        if (ObjectUtils.isEmpty(userPO)) {
+            return Mono.empty();
+        }
         AuthUserDetails user = new AuthUserDetails();
         user.setId(userPO.getId());
         user.setUsername(userPO.getUsername());

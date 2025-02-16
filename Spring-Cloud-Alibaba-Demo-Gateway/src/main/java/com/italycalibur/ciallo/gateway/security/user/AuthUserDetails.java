@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.gateway.user;
+package com.italycalibur.ciallo.gateway.security.user;
 
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.italycalibur.ciallo.gateway.user;
+package com.italycalibur.ciallo.common.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

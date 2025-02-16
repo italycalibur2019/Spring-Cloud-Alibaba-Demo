@@ -9,7 +9,7 @@ import com.italycalibur.ciallo.gateway.security.MD5PasswordEncoder;
 import com.italycalibur.ciallo.gateway.handler.LoginFailureHandler;
 import com.italycalibur.ciallo.gateway.handler.LoginSuccessHandler;
 import com.italycalibur.ciallo.gateway.handler.LogoutSuccessHandler;
-import com.italycalibur.ciallo.gateway.service.AuthUserDetailsService;
+import com.italycalibur.ciallo.gateway.security.service.AuthUserDetailsService;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
