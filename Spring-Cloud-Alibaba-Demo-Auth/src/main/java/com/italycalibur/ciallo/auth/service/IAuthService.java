@@ -1,6 +1,7 @@
 package com.italycalibur.ciallo.auth.service;
 
 import com.italycalibur.ciallo.auth.dto.RegisterDTO;
+import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
 
 /**
  * @author dhr
@@ -15,4 +16,11 @@ public interface IAuthService {
      * @return 结果
      */
     String register(RegisterDTO params);
+
+    /**
+     * 重置密码
+     * @param params 重置密码信息
+     * @return 结果
+     */
+    String resetPassword(ResetPasswordDTO params);
 }

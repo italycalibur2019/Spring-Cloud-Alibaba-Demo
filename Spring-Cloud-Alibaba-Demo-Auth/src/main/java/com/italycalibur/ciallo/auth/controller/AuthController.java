@@ -1,6 +1,7 @@
 package com.italycalibur.ciallo.auth.controller;
 
 import com.italycalibur.ciallo.auth.dto.RegisterDTO;
+import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
 import com.italycalibur.ciallo.auth.service.IAuthService;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
@@ -29,5 +30,14 @@ public class AuthController {
             return Result.error("注册失败：" + result);
         }
         return Result.ok("注册成功！");
+    }
+
+    @PostMapping("/resetPassword")
+    public Result<String> resetPassword(@RequestBody ResetPasswordDTO params) {
+        String result = authService.resetPassword(params);
+        if (StringUtils.hasLength(result)) {
+            return Result.error("重置密码失败：" + result);
+        }
+        return Result.ok("重置密码成功！");
     }
 }

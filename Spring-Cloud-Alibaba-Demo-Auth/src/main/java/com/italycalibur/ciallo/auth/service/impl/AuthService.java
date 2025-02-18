@@ -1,6 +1,7 @@
 package com.italycalibur.ciallo.auth.service.impl;
 
 import com.italycalibur.ciallo.auth.dto.RegisterDTO;
+import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
 import com.italycalibur.ciallo.auth.service.IAuthService;
 import com.italycalibur.ciallo.common.utils.MD5Utils;
 import com.italycalibur.ciallo.common.models.entity.UserPO;
@@ -32,6 +33,20 @@ public class AuthService implements IAuthService {
             return "用户名" + params.getUsername() + "已存在！";
         }
         userMapper.insert(new UserPO(params.getUsername(), MD5Utils.md5Encode(params.getPassword())));
+        return "";
+    }
+
+    @Override
+    public String resetPassword(ResetPasswordDTO params) {
+        UserPO user = userMapper.selectByUsername(params.getUsername());
+        if (ObjectUtils.isEmpty(user)) {
+            return "用户名" + params.getUsername() + "不存在！";
+        }
+        if (!params.getConfirmPassword().equals(params.getPassword())) {
+            return "两次输入的密码不一致！";
+        }
+        user.setPassword(MD5Utils.md5Encode(params.getPassword()));
+        userMapper.updateById(user);
         return "";
     }
 }
