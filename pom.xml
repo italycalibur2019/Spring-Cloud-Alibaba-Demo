@@ -25,6 +25,7 @@
         <fastjson.version>2.0.54</fastjson.version>
         <xxl-job.version>3.0.0</xxl-job.version>
         <hutool.version>5.8.35</hutool.version>
+        <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
     </properties>
 
     <modules>
@@ -126,6 +127,12 @@
                 <version>${hutool.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- dynamic-datasource 多数据源 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+                <version>${dynamic-datasource.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

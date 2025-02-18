@@ -4,10 +4,8 @@ spring:
   config:
     import:
       - nacos:gateway-service-dev.yml
-      - nacos:common-db-dev.yml
-      - nacos:common-redis-dev.yml
-      - nacos:common-jwt-dev.yml
-      - nacos:common-secure-dev.yml
+      - nacos:common-dev.yml
+      - nacos:auth-dev.yml
   cloud:
     nacos:
       discovery:

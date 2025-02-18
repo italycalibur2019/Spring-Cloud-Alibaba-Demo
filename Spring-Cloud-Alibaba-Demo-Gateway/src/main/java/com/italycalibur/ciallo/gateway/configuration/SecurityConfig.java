@@ -83,12 +83,12 @@ public class SecurityConfig {
                         .anyExchange().authenticated()// 其他请求都需要认证
                 )
                 .formLogin(login -> login
-                        .loginPage("/auth/login")// 登录路径
+                        .loginPage("/api/login")// 登录路径
                         .authenticationSuccessHandler(loginSuccessHandler)// 登录成功处理器
                         .authenticationFailureHandler(loginFailureHandler)// 登录失败处理器
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/auth/logout")// 登出地址
+                        .logoutUrl("/api/logout")// 登出地址
                         .logoutSuccessHandler(logoutSuccessHandler) // 登出成功处理器
                 )
                 .addFilterAt(new JwtTokenAuthenticationFilter(property, utils, authUserDetailsService), SecurityWebFiltersOrder.HTTP_BASIC)

@@ -2,7 +2,7 @@ package com.italycalibur.ciallo.task.handler.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.italycalibur.ciallo.common.exception.CialloException;
-import com.italycalibur.ciallo.common.models.entity.GoodsMasterPo;
+import com.italycalibur.ciallo.common.models.entity.GoodsMasterPO;
 import com.italycalibur.ciallo.common.models.mapper.GoodsMasterMapper;
 import com.italycalibur.ciallo.task.handler.ISendMessageHandler;
 import com.xxl.job.core.context.XxlJobHelper;
@@ -31,16 +31,16 @@ public class SendMessageHandler implements ISendMessageHandler {
         log.info(">>>>>>>>>> 任务开始时间：{}", new Date());
         int shardTotal = XxlJobHelper.getShardTotal();
         int shardIndex = XxlJobHelper.getShardIndex();
-        List<GoodsMasterPo> goodsMasterPos;
+        List<GoodsMasterPO> goodsMasterPOS;
         if (shardTotal == 1) {
-            goodsMasterPos = goodsMasterMapper.selectList(Wrappers.emptyWrapper());
+            goodsMasterPOS = goodsMasterMapper.selectList(Wrappers.emptyWrapper());
         }else {
             // 分片查询
-            goodsMasterPos = goodsMasterMapper.findAllByMod(shardIndex, shardTotal);
+            goodsMasterPOS = goodsMasterMapper.findAllByMod(shardIndex, shardTotal);
         }
-        log.info("待处理任务数量：{}", goodsMasterPos.size());
+        log.info("待处理任务数量：{}", goodsMasterPOS.size());
         long startTime = System.currentTimeMillis();
-        goodsMasterPos.forEach(item -> {
+        goodsMasterPOS.forEach(item -> {
             try {
                 // 模拟耗时
                 TimeUnit.MILLISECONDS.sleep(10);

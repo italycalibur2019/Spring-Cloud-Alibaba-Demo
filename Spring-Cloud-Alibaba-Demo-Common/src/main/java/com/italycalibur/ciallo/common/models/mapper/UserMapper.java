@@ -1,5 +1,6 @@
 package com.italycalibur.ciallo.common.models.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import org.apache.ibatis.annotations.Mapper;
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
  * @description: 用户表 Mapper
  * @date 2025-02-08 13:06:13
  */
-@Mapper
+@DS("sys")
 public interface UserMapper extends BaseMapper<UserPO> {
     /**
      * 根据用户名查询用户信息

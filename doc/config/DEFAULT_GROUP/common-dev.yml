@@ -1,39 +1,14 @@
 spring:
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6378
+      password: redis
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
+   dynamic:
     # druid 连接池管理
     druid:
-      # 多数据源配置
-      datasource1:
-        name: datasource1
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/demo?currentSchema=public
-        username: postgres
-        password: 123456
-      datasource2:
-        name: datasource2
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/demo?currentSchema=sys
-        username: postgres
-        password: 123456
-      datasource3:
-        name: datasource3
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/demo?currentSchema=basic
-        username: postgres
-        password: 123456
-      datasource4:
-        name: datasource4
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/demo?currentSchema=order
-        username: postgres
-        password: 123456
-      datasource5:
-        name: datasource5
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/demo?currentSchema=stock
-        username: postgres
-        password: 123456
       # 初始化时建立物理连接的个数
       initial-size: 5
       # 连接池的最小空闲数量
@@ -87,8 +62,47 @@ spring:
         allow: 127.0.0.1
         # IP黑名单（共同存在时，deny优先于allow）
         deny:
-
----
+    # 多数据源配置
+    primary: public
+    strict: false
+    datasource:
+      public:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=public
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+      sys:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=sys
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+      basic:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=basic
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+      order:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=order
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+      stock:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=stock
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+      fee:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/demo?currentSchema=fee
+        username: postgres
+        password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+## mybatis-plus 配置
 mybatis-plus:
   # 指定mapper配置文件路径
   mapper-locations: classpath*:/mapper/**.xml
@@ -106,3 +120,14 @@ mybatis-plus:
       table-prefix: t_
       # 主键策略
       id-type: ASSIGN_ID
+## jwt 配置
+jwt:
+  token:
+    # 密钥字符串（256位）
+    secret-key: XioEqEG2bHV/AkH6s9fVTFF2BIdvMoUL
+    # token有效时间（单位：毫秒）——24小时
+    expire-time: 86400000
+    # token前缀
+    prefix: 'Bearer '
+    # token头文件名
+    header: Authorization

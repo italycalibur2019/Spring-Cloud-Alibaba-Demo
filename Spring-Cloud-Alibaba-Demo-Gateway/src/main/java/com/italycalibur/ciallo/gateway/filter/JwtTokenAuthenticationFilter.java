@@ -2,7 +2,6 @@ package com.italycalibur.ciallo.gateway.filter;
 
 import cn.hutool.core.convert.Convert;
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
-import com.italycalibur.ciallo.common.exception.CialloException;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
 import com.italycalibur.ciallo.gateway.security.service.AuthUserDetailsService;
 import io.jsonwebtoken.Claims;
@@ -45,13 +44,12 @@ public class JwtTokenAuthenticationFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String token = resolveToken(exchange.getRequest());
-        if (!StringUtils.hasLength(token)) {
-            throw new CialloException("未获取到有效Token!");
-        }
-        // 验证token有效性
-        Authentication authentication = this.getAuthentication(token);
-        if (!ObjectUtils.isEmpty(authentication)) {
-            return chain.filter(exchange).contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication));
+        if (StringUtils.hasLength(token)) {
+            // 验证token有效性
+            Authentication authentication = this.getAuthentication(token);
+            if (!ObjectUtils.isEmpty(authentication)) {
+                return chain.filter(exchange).contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication));
+            }
         }
         return chain.filter(exchange);
     }

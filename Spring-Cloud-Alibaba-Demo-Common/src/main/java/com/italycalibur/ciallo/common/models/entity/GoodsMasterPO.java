@@ -1,7 +1,6 @@
 package com.italycalibur.ciallo.common.models.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 
 import com.italycalibur.ciallo.common.domain.BaseEntity;
 import lombok.*;
@@ -20,7 +19,7 @@ import lombok.*;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @TableName(value = "t_goods_master_po", schema = "basic")
-public class GoodsMasterPo extends BaseEntity {
+public class GoodsMasterPO extends BaseEntity {
 
     private String masterName;
 

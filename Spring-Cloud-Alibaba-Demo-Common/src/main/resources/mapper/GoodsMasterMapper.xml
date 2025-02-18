@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.italycalibur.ciallo.common.models.mapper.GoodsMasterMapper">
 
-    <select id="findAllByMod" resultType="com.italycalibur.ciallo.common.models.entity.GoodsMasterPo">
+    <select id="findAllByMod" resultType="com.italycalibur.ciallo.common.models.entity.GoodsMasterPO">
         select * from basic.t_goods_master_po where mod(id, #{shardingTotal}) = #{shardingIndex}
     </select>
 </mapper>

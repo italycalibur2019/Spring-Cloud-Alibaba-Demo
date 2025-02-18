@@ -1,8 +1,8 @@
 package com.italycalibur.ciallo.common.models.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.italycalibur.ciallo.common.models.entity.GoodsPO;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
  * @description: 货物表 Mapper
  * @date 2025-02-08 13:06:13
  */
-@Mapper
+@DS("basic")
 public interface GoodsMapper extends BaseMapper<GoodsPO> {
     /**
      * 根据用户名查询用户信息
