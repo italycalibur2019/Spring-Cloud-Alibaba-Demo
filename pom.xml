@@ -36,6 +36,7 @@
         <module>Spring-Cloud-Alibaba-Demo-Order</module>
         <module>Spring-Cloud-Alibaba-Demo-Stock</module>
         <module>Spring-Cloud-Alibaba-Demo-Fee</module>
+        <module>Spring-Cloud-Alibaba-Demo-Auth</module>
         <module>Spring-Cloud-Alibaba-Demo-Task</module>
     </modules>
 

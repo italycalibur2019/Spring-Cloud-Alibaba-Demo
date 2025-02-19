@@ -1,0 +1,8 @@
+secure:
+  whitelist:
+    login-url: /auth/login
+    logout-url: /auth/logout
+    urls:
+      - /auth/**
+      - /static/**
+      - /index
