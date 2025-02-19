@@ -1,6 +1,0 @@
-secure:
-  whitelist:
-    urls:
-      - /auth/login
-      - /auth/register
-      - /auth/logout

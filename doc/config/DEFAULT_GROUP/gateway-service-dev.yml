@@ -59,11 +59,5 @@ spring:
             - Path=/fee/**
           filters:
             - PrefixPath=/application
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth/**
-          filters:
-              - PrefixPath=/application
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★

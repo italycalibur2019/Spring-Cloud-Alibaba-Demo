@@ -1,7 +1,6 @@
 package com.italycalibur.ciallo.gateway.configuration;
 
 import com.italycalibur.ciallo.common.configuration.properties.JwtTokenProperty;
-import com.italycalibur.ciallo.common.configuration.properties.SecureUrlProperty;
 import com.italycalibur.ciallo.common.domain.Result;
 import com.italycalibur.ciallo.common.utils.JwtUtils;
 import com.italycalibur.ciallo.gateway.filter.JwtTokenAuthenticationFilter;
@@ -10,10 +9,8 @@ import com.italycalibur.ciallo.gateway.handler.LoginFailureHandler;
 import com.italycalibur.ciallo.gateway.handler.LoginSuccessHandler;
 import com.italycalibur.ciallo.gateway.handler.LogoutSuccessHandler;
 import com.italycalibur.ciallo.gateway.security.service.AuthUserDetailsService;
-import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +22,6 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.server.ServerWebExchange;
@@ -40,18 +36,10 @@ import reactor.core.publisher.Mono;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
-    @Resource
-    private SecureUrlProperty secureUrlProperty;
-
-    @Bean
-    @Primary
-    public PasswordEncoder passwordEncoder() {
-        return new MD5PasswordEncoder();
-    }
 
     @Bean
     public ReactiveAuthenticationManager reactiveAuthenticationManager(
-            AuthUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+            AuthUserDetailsService userDetailsService, MD5PasswordEncoder passwordEncoder) {
         UserDetailsRepositoryReactiveAuthenticationManager authenticationManager
                 = new UserDetailsRepositoryReactiveAuthenticationManager(userDetailsService);
         authenticationManager.setPasswordEncoder(passwordEncoder);
@@ -78,7 +66,6 @@ public class SecurityConfig {
                 )
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .authorizeExchange(auth -> auth
-                        .pathMatchers(secureUrlProperty.getUrls()).permitAll()// 放行白名单
                         .pathMatchers(HttpMethod.OPTIONS).permitAll()// 放行options请求
                         .anyExchange().authenticated()// 其他请求都需要认证
                 )
