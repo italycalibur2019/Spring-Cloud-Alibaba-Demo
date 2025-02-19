@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description: 访问管理
  */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/application/auth")
 public class AuthController {
     @Resource
     private IAuthService authService;
