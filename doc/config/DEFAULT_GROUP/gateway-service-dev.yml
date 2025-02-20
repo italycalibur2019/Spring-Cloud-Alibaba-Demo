@@ -5,6 +5,30 @@ server:
       force: true
       charset: UTF-8
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:9085
+          jwk-set-uri: http://127.0.0.1:9085/oauth2/jwks
+      client:
+        provider:
+          oauth-server:
+            issuer-uri: http://127.0.0.1:9085
+            user-info-uri: ${spring.security.oauth2.client.provider.oauth-server.issuer-uri}/user
+            authorization-uri: ${spring.security.oauth2.client.provider.oauth-server.issuer-uri}/oauth2/authorize
+            token-uri: ${spring.security.oauth2.client.provider.oauth-server.issuer-uri}/oauth2/token
+        registration:
+          messageing-client-oidc:
+            provider: oauth-server
+            client-id: messageing-client
+            client-secret: secret
+            client-name: messageing-client-oidc
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:9999/login/oauth2/code/{registrationId}
+            scope:
+              - profile
+              - openid
   cloud:
     sentinel:
       transport:
@@ -13,21 +37,14 @@ spring:
       filter:
         enabled: false
     gateway:
-      globalcors:
-        cors-configuration:
-          '[/**]':
-            allowedOrigins: '[*]'
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
       discovery:
         locator:
           # 开启注册中心路由功能
           enabled: true
           # 将请求路径上的服务名配置为小写
           lower-case-service-id: true
+      default-filters:
+        - TokenRelay=
       routes:
         - id: admin-service
           uri: lb://admin-service
@@ -59,11 +76,7 @@ spring:
             - Path=/fee/**
           filters:
             - PrefixPath=/application
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth/**
-          filters:
-              - PrefixPath=/application
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★
+  gateway:
+    enabled: true

@@ -4,5 +4,32 @@ server:
     encoding:
       force: true
       charset: UTF-8
+spring:
+  security:
+    user:
+      name: admin
+      password: abc1234.
+    oauth2:
+      authorizationserver:
+        client:
+          messageing-client:
+            registration:
+              client-id: messageing-client
+              client-secret: '{noop}secret'
+              client-name: Articles Client
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+                - client_credentials
+              redirect-uris:
+                - http://127.0.0.1:9999/login/oauth2/code/messageing-client-oidc
+              scopes:
+                - openid
+                - profile
+            require-authorization-consent: true
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★
+  authorization:
+    enabled: true
