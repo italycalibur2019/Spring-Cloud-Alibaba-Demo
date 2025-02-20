@@ -4,5 +4,13 @@ server:
     encoding:
       force: true
       charset: UTF-8
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:9085
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★
+  resource:
+    enabled: true
