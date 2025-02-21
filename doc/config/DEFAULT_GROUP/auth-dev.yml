@@ -3,7 +3,7 @@ secure:
     login-url: /api/auth/login
     logout-url: /api/auth/logout
     urls:
-      - /application/auth/**
+      - /auth/**
       - /doc.html
       - /webjars/**
       - /v3/**

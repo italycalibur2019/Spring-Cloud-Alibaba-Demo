@@ -32,7 +32,7 @@ spring:
         - id: admin-service
           uri: lb://admin-service
           predicates:
-            - Path=/admin/**
+            - Path=/admin/**,/auth/**
           filters:
             - PrefixPath=/application
         - id: basic-service
