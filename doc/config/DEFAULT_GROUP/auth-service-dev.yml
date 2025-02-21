@@ -1,8 +1,0 @@
-server:
-  port: 9085
-  servlet:
-    encoding:
-      force: true
-      charset: UTF-8
-config:
-  info: 前辈，Ciallo～(∠・ω< )⌒★
