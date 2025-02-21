@@ -1,7 +1,7 @@
-package com.italycalibur.ciallo.auth.service;
+package com.italycalibur.ciallo.admin.service;
 
-import com.italycalibur.ciallo.auth.dto.RegisterDTO;
-import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
+import com.italycalibur.ciallo.admin.dto.RegisterDTO;
+import com.italycalibur.ciallo.admin.dto.ResetPasswordDTO;
 
 /**
  * @author dhr

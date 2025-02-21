@@ -1,8 +1,8 @@
-package com.italycalibur.ciallo.auth.controller;
+package com.italycalibur.ciallo.admin.controller;
 
-import com.italycalibur.ciallo.auth.dto.RegisterDTO;
-import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
-import com.italycalibur.ciallo.auth.service.IAuthService;
+import com.italycalibur.ciallo.admin.dto.RegisterDTO;
+import com.italycalibur.ciallo.admin.dto.ResetPasswordDTO;
+import com.italycalibur.ciallo.admin.service.IAuthService;
 import com.italycalibur.ciallo.common.domain.Result;
 import jakarta.annotation.Resource;
 import org.springframework.util.StringUtils;

@@ -1,8 +1,10 @@
 secure:
   whitelist:
-    login-url: /auth/login
-    logout-url: /auth/logout
+    login-url: /api/auth/login
+    logout-url: /api/auth/logout
     urls:
-      - /auth/**
-      - /static/**
-      - /index
+      - /application/auth/**
+      - /doc.html
+      - /webjars/**
+      - /v3/**
+      - /swagger-resources/**

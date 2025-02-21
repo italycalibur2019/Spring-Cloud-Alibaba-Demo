@@ -1,8 +1,8 @@
-package com.italycalibur.ciallo.auth.service.impl;
+package com.italycalibur.ciallo.admin.service.impl;
 
-import com.italycalibur.ciallo.auth.dto.RegisterDTO;
-import com.italycalibur.ciallo.auth.dto.ResetPasswordDTO;
-import com.italycalibur.ciallo.auth.service.IAuthService;
+import com.italycalibur.ciallo.admin.dto.RegisterDTO;
+import com.italycalibur.ciallo.admin.dto.ResetPasswordDTO;
+import com.italycalibur.ciallo.admin.service.IAuthService;
 import com.italycalibur.ciallo.common.utils.MD5Utils;
 import com.italycalibur.ciallo.common.models.entity.UserPO;
 import com.italycalibur.ciallo.common.models.mapper.UserMapper;
