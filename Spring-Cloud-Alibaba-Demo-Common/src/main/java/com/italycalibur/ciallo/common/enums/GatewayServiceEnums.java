@@ -17,7 +17,7 @@ public enum GatewayServiceEnums {
     ORDER_SERVICE("order-service", "订单模块"),
     STOCK_SERVICE("stock-service", "库存模块"),
     FEE_SERVICE("fee-service", "费用模块"),
-    AUTH_SERVICE("auth-service", "认证模块"),
+    GATEWAY_SERVICE("gateway-service", "网关模块"),
     UNKNOWN("unknown", "未知服务");
 
     private final String code;

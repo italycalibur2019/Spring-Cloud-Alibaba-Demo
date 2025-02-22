@@ -38,6 +38,9 @@ knife4j:
     language: zh_cn
     swagger-model-name: 实体类列表
     enable-version: true # 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
-    enable-host-text: 127.0.0.1:9080
-    enable-footer-custom: true
-    footer-custom-content: MIT License | Copyright  2025-[italycalibur](https://github.com/italycalibur2019)
+    enable-filter-multipart-apis: true # RequestMapping接口,是否开启过滤
+    enable-filter-multipart-api-method-type: GET # RequestMapping只展示哪种类型
+    enable-home-custom: true # 开启自定义主页
+    home-custom-path: classpath:markdown/home.md # 自定义主页路径
+    enable-footer-custom: true # 开启自定义页脚
+    footer-custom-content: <strong>MIT License | Copyright  2025 - [italycalibur2019](https://github.com/italycalibur2019)</strong>
