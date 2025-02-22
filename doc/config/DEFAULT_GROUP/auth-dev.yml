@@ -9,3 +9,4 @@ secure:
       - /v3/** # 放行网关的swagger
       - /*/v3/** # 放行每个子模块的swagger
       - /swagger-resources/**
+      - /favicon.ico
