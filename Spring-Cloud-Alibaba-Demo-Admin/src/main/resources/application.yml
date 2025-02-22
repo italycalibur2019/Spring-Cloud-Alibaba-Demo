@@ -16,3 +16,24 @@ spring:
         username: nacos
         password: nacos
         file-extension: yml
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  # 开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+  production: false
+  setting:
+    language: zh_cn
+    swagger-model-name: 实体类列表
+    enable-version: true # 是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enable-host-text: 127.0.0.1:9080
+    enable-footer-custom: true
+    footer-custom-content: MIT License | Copyright  2025-[italycalibur](https://github.com/italycalibur2019)

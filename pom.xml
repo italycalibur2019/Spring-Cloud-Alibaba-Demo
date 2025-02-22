@@ -26,6 +26,7 @@
         <xxl-job.version>3.0.0</xxl-job.version>
         <hutool.version>5.8.35</hutool.version>
         <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
+        <knife4j.version>4.5.0</knife4j.version>
     </properties>
 
     <modules>
@@ -132,6 +133,14 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
                 <version>${dynamic-datasource.version}</version>
+            </dependency>
+            <!-- knife4j 增强版swagger -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-dependencies</artifactId>
+                <version>${knife4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

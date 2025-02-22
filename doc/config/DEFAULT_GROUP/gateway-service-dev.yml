@@ -33,31 +33,21 @@ spring:
           uri: lb://admin-service
           predicates:
             - Path=/admin/**,/auth/**
-          filters:
-            - PrefixPath=/application
         - id: basic-service
           uri: lb://basic-service
           predicates:
             - Path=/basic/**
-          filters:
-            - PrefixPath=/application
         - id: order-service
           uri: lb://order-service
           predicates:
             - Path=/order/**
-          filters:
-            - PrefixPath=/application
         - id: stock-service
           uri: lb://stock-service
           predicates:
             - Path=/stock/**
-          filters:
-            - PrefixPath=/application
         - id: fee-service
           uri: lb://fee-service
           predicates:
             - Path=/fee/**
-          filters:
-            - PrefixPath=/application
 config:
   info: 前辈，Ciallo～(∠・ω< )⌒★

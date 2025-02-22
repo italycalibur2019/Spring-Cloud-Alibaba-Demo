@@ -6,5 +6,6 @@ secure:
       - /auth/**
       - /doc.html
       - /webjars/**
-      - /v3/**
+      - /v3/** # 放行网关的swagger
+      - /*/v3/** # 放行每个子模块的swagger
       - /swagger-resources/**

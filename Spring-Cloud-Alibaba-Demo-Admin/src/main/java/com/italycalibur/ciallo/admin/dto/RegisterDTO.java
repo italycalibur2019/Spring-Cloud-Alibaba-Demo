@@ -1,5 +1,6 @@
 package com.italycalibur.ciallo.admin.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -9,7 +10,10 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
+@Schema(name = "注册参数")
 public class RegisterDTO {
+    @Schema(description = "用户名", requiredMode = Schema.RequiredMode.REQUIRED)
     private String username;
+    @Schema(description = "密码", requiredMode = Schema.RequiredMode.REQUIRED)
     private String password;
 }
